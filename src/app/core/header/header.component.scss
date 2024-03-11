@@ -1,0 +1,36 @@
+.header {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    position: fixed;
+    width: 98%;
+    z-index: 1000;
+  }
+
+  &__logo-container {
+    img {
+      height: 30px;
+    }
+  }
+
+  &__login-container {
+    &__btn {
+      background-color: #e60000;
+      color: #ffffff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #d80000;
+      }
+    }
+  }
+}

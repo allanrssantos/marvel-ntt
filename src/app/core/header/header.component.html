@@ -1,0 +1,9 @@
+<header class="header__container">
+  <div class="header__logo-container">
+    <img src="/assets/img/marvel-logo.png" alt="Logo Marvel">
+  </div>
+  <div class="header__login-container">
+    <button class="header__login-container__btn" *ngIf="!isLoggedIn" (click)="onGo()">Enter</button>
+    <button class="header__login-container__btn" *ngIf="isLoggedIn" (click)="onExit()">Exit</button>
+  </div>
+</header>
