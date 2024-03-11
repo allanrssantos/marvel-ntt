@@ -1,0 +1,31 @@
+<main *ngIf="character">
+  <div class="character-detail">
+    <div class="character-header">
+      <img [src]="imageUrl" alt="Character Photo" class="character-photo" />
+      <h2>{{ character.name }}</h2>
+    </div>
+    <div class="character-info">
+      <p>
+        <span class="info-label">Comics: </span
+        ><span class="info-value">{{ character.comics.returned }}</span>
+      </p>
+      <p>
+        <span class="info-label">Events: </span
+        ><span class="info-value">{{ character.events.returned }}</span>
+      </p>
+      <p>
+        <span class="info-label">Series: </span
+        ><span class="info-value">{{ character.series.returned }}</span>
+      </p>
+      <p>
+        <span class="info-label">Stories: </span
+        ><span class="info-value">{{ character.stories.returned }}</span>
+      </p>
+      <p class="description">
+        <span class="info-label">Description: </span
+        ><span class="info-value">{{ character.description || "N/A" }}</span>
+      </p>
+    </div>
+    <button class="close-button" (click)="close()">X</button>
+  </div>
+</main>
