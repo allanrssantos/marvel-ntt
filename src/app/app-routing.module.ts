@@ -7,8 +7,7 @@ import { CharacterDetailsComponent } from './components/characters/character-det
 
 const routes: Routes = [
   { path: 'characters', component: CharactersComponent, canActivate:[AuthGuard] },
-  { path: 'character', component: CharacterDetailsComponent, canActivate:[AuthGuard] }
-
+  { path: 'characters/detail', component: CharacterDetailsComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({
