@@ -1,8 +1,9 @@
 .filter-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   padding: 10px;
+  margin-right: 100px;
 }
 
 .character-select {
