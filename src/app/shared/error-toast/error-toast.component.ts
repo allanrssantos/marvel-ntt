@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-error-toast',
@@ -11,13 +10,13 @@ export class ErrorToastComponent implements OnInit {
   @Input() errorCode: string = '';
   show: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.show = true;
     setTimeout(() => {
       this.show = false;
-      this.router.navigate(['/'])
+      window.location.reload();
     }, 5000);
   }
 }
