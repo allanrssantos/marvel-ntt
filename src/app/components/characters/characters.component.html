@@ -4,12 +4,12 @@
       {{ selectedCharacter || "Select character..." }}
     </div>
     <input
-      type="text"
-      *ngIf="showDropdown"
-      [(ngModel)]="filterText"
-      (keyup)="filterCharacters()"
-      placeholder="Search by name..."
-      class="search-input"
+    type="text"
+    *ngIf="showDropdown"
+    [(ngModel)]="filterText"
+    (keyup)="filterCharacters()"
+    placeholder="Search by name..."
+    class="search-input"
     >
     <ul *ngIf="showDropdown" class="filtered-results">
       <li *ngFor="let characterName of filteredCharacterNames" (click)="selectCharacter(characterName)">
@@ -18,15 +18,18 @@
     </ul>
   </div>
 </div>
+<button *ngIf="showBackButton" (click)="clearFilter()" class="clear-filter-btn">
+  Clear filter
+</button>
 
-
-<main class="character-cards-container">
+<main class="character-cards-container" [ngStyle]="{'margin-top': showBackButton || filteredCharacters.length === 1 ? '20px' : '60px'}">
   <app-card-character
-    *ngFor="let character of (filteredCharacters.length > 0 ? filteredCharacters : charactersState.characters); let i = index"
-    [character]="character"
-    [index]="i"
-    (click)="goToCharacterDetail(character)">
-  </app-card-character>
-  <app-loading *ngIf="loading"></app-loading>
-  <app-error-toast *ngIf="error" [errorCode]="errorCode" [errorMessage]="errorMessage"></app-error-toast>
+  *ngFor="let character of (filteredCharacters.length > 0 ? filteredCharacters : charactersState.characters); let i = index"
+  [character]="character"
+  [index]="i"
+  (click)="goToCharacterDetail(character)">
+</app-card-character>
+<app-error-toast *ngIf="error" [errorCode]="errorCode" [errorMessage]="errorMessage"></app-error-toast>
+<app-loading *ngIf="loading" [isLoading]="loading"></app-loading>
 </main>
+

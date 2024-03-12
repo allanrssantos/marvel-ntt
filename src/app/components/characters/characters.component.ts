@@ -12,7 +12,7 @@ import { MarvelService } from 'src/app/services/marvel.service';
   styleUrls: ['./characters.component.scss'],
 })
 export class CharactersComponent implements OnInit, OnDestroy {
-  loading: boolean = true;
+  loading: boolean = false;
   error: boolean = false;
   errorCode: string = '';
   errorMessage: string = '';
@@ -26,6 +26,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
   showDropdown: boolean = false;
   selectedCharacter: string | null = null;
   private subscription = new Subscription();
+  marginTop: string = '';
 
 
   constructor(
@@ -39,7 +40,6 @@ export class CharactersComponent implements OnInit, OnDestroy {
       this.loadAllCharacters();
     } else {
       this.loadCharacterNames();
-      this.loading = false;
       this.restoreScrollPosition();
     }
   }
@@ -86,7 +86,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
   goToCharacterDetail(character: Character): void {
     this.charactersState.scrollPosition = window.scrollY;
     this.marvelService.changeCharacter(character);
-    this.router.navigate(['/character']);
+    this.router.navigate(['/characters/detail']);
   }
 
   filterCharacters(): void {
@@ -135,10 +135,20 @@ export class CharactersComponent implements OnInit, OnDestroy {
       this.selectedCharacter = null;
       return;
     }
+    this.showBackButton = true;
     this.selectedCharacter = characterName;
     this.showDropdown = false;
     this.filterText = '';
     this.filteredCharacterNames = [];
     this.applyFilter(characterName);
+  }
+
+   clearFilter(): void {
+    this.selectedCharacter = null;
+    this.filterText = '';
+    this.filteredCharacters = [];
+    this.filteredCharacterNames = this.charactersState.characters.map(character => character.name);
+    this.showDropdown = false;
+    this.showBackButton = false;
   }
 }

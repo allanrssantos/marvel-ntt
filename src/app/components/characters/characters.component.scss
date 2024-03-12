@@ -76,16 +76,27 @@ li {
   }
 }
 
+.clear-filter-btn {
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-top: 60px;
+  background-color: #e60000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken(#e60000, 10%);
+  }
+}
 
 .character-cards-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin-top: 60px;
-
+  height: 100%;
 
   .character-card {
     width: 20%;
